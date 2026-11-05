@@ -1,3 +1,4 @@
+
 # Функції
 # У мовах програмування, що реалізують функціональну
 # парадигму, бажано розрізняти терміни "функція" та
@@ -13,6 +14,7 @@ def say_hello():  # def - оголошення функції, традиція:
     # Між оголошеннями функцій прийнято
     # залишати 2 порожні рядки (принаймні)
 
+
 def say_hi(name: str) -> None:  # None - аналог NULL / void / undefined
     print("Hi,", name)
 
@@ -23,6 +25,7 @@ def print_xy(x: int = 10, y: int = 20) -> None:  # значення за зам�
 
 def print_xy(x: int = 10, y: int = 20, t: int = 30) -> None:  # перевантаження?
     print('x =', x, 'y =', y, 't =', t)  # Не перевантаження а переозначення
+
 # У Python немає перевантаження функцій, у той же час немає помилки
 # переозначення. Оголошення функції ближче до операції присвоєння:
 # повторне оголошення переприсвоює тіло функції незалежно від кількості/типів
@@ -51,11 +54,14 @@ def gcd(a: int, b: int) -> int:
 
 w = 10
 
+
 def get_w():
     return w
 
+
 def set_w(new_w):
     w = new_w
+
 
 def set_gw(new_w):
     global w
@@ -65,9 +71,28 @@ def set_gw(new_w):
 def show(*args):
     print(*args)
 
+
 def show_kw(**kwargs):
     for k, v in kwargs.items():
         print(f"{k} => {v}")
+
+
+# Варіадична функція з прийомом позиційних та іменованих аргументів
+def greet_and_sum(*args, **kwargs):
+
+    # Якщо серед іменованих аргументів є "name",
+    # виводимо привітання з переданим ім'ям
+    if "name" in kwargs:
+        print(f"Hello, {kwargs['name']}")
+
+    # Підрахунок суми числових позиційних аргументів
+    # Нечислові значення ігноруються
+    total = sum(
+        arg for arg in args
+        if isinstance(arg, (int, float)) and not isinstance(arg, bool)
+    )
+
+    print("Sum of numeric arguments:", total)
 
 
 # У Python діє модульний принцип - файли можуть підключатись
@@ -75,6 +100,7 @@ def show_kw(**kwargs):
 # код файлу виконується. Під час виконання в файл передається
 # назва модуля __name__ з якою він підключається. Якщо файл
 # викликається як самостійна програма, то її значення: __main__
+
 
 def main():
     pass        # pass - порожня операція (замість порожнього блоку)
@@ -86,19 +112,19 @@ def main():
     print_xy(y=2)      # у довільних комбінаціях з переданими.
     print_xy(y=1, x=2) #
     print_xy(y=1, t=2) #
-    print( factorial(5) )
-    print( factorial(6) )
-    print( gcd(16, 12) )  # 4
-    print( gcd(12, 15) )  # 3
-    print( gcd(12, 14) )  # 2
-    print( gcd(12, 13) )  # 1
-    print( gcd(12, 12) )  # 12
+    print(factorial(5))
+    print(factorial(6))
+    print(gcd(16, 12))  # 4
+    print(gcd(12, 15))  # 3
+    print(gcd(12, 14))  # 2
+    print(gcd(12, 13))  # 1
+    print(gcd(12, 12))  # 12
 
-    print( get_w() )      # 10
+    print(get_w())      # 10
     set_w(20)
-    print( get_w() )      # 10
+    print(get_w())      # 10
     set_gw(20)
-    print( get_w() )     
+    print(get_w())
 
     show(1)
     show(1, 2)
@@ -111,6 +137,15 @@ def main():
     data = {'x': 10, 'y': 20}
     # show_kw(data)  TypeError: show_kw() takes 0 positional arguments but 1 was given
     show_kw(**data)  # x => 10 y => 20
+
+    # Перевірка роботи варіадичної функції
+    print("\nВаріадична функція:")
+
+    greet_and_sum(1, 2, 3, name="Vira")
+    greet_and_sum(10, "hello", 5, 2.5, name="Anna")
+    greet_and_sum(4, 6, "Python")
+    greet_and_sum("text", name="User")
+
 
 if __name__ == '__main__':
     main()
