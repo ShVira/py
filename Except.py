@@ -52,7 +52,7 @@ def no_throw():
 
 
 def main():
-    # Список доступних винятків
+    # Список доступних винятківв
     exceptions = {
         1: ("TypeError", throw_type_error),
         2: ("ValueError", throw_value_error),

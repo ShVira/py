@@ -50,7 +50,7 @@ def iife_demo():
     funcs[2]()  # My index is 4
     funcs[0]()  # My index is 4
 
-    # Чому всі функції виводять однаковий результат (4)?
+    # Чому? всі функції виводять однаковий результат (4)?
     # Python є інтерпретатором і формує тіло функції без
     # компіляції — просто текст: print(f"My index is {i}")
     # ! без підстановки "i" до рядка.
@@ -71,7 +71,7 @@ def iife_demo():
 
 
 def main():
-    # iife_demo()
+    # iife_demo() комічу
     init_lam2()
     lam2()  # Lambda 2: x = 10
     init_lam3()

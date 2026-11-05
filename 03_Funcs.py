@@ -98,7 +98,7 @@ def main():
     set_w(20)
     print( get_w() )      # 10
     set_gw(20)
-    print( get_w() )      # 20
+    print( get_w() )     
 
     show(1)
     show(1, 2)
